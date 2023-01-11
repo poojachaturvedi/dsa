@@ -1,0 +1,25 @@
+BASICS:
+print name n no of times
+print from 1 to n
+print from n to 1
+print from n to 1 via backtracking'
+print from 1 to n via backtracking
+sum of numbers 
+factorial of numbers
+
+
+Easy:
+reverse an array				--leetcode easy
+check if string is palindrome or not --leetcode easy
+fibonnacci	--leetcode easy
+
+Medium:
+print subset sum--leetcode medium
+combination sum--1 leetcode
+combination sum--2 leetcode
+subset sum--1 	 leetcode
+subset sum --2 	 leetcode
+perfect sum problem gfg medium
+print all subsequence with sum k--gfg medium
+count the subsequence with sum k 
+check if the subsequence is present or not 

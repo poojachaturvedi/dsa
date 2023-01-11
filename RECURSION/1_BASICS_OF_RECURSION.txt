@@ -1,0 +1,17 @@
+RECURSION
+--when function calls itself until and unless the base condition is met
+--infinite Recursion
+--segmentation fault:endless recursive call
+--base condition: to stop the execution
+
+cnt=0;
+f()
+{
+//base condition
+if(cnt==3)
+return;	//function gets terminated here
+cnt++;
+f();
+}
+
+

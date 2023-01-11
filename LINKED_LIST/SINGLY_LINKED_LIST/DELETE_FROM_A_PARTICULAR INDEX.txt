@@ -1,0 +1,16 @@
+--GO TO INDEX-1
+--fetch.next=fetch.next.next;
+
+
+int deleteIndex(){
+if(index==0)
+return deleteFirst();
+}
+if(index==size){
+return deleteLast();
+}
+Node prev=get(index-1);
+int val=prev.next.val;
+prev.next=prev.next.next;
+return val;
+}

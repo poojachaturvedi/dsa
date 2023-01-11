@@ -1,0 +1,13 @@
+--simply make head point to the next node
+
+int deleteFirst(){
+
+int ele=head->val;
+head=head->next;
+if(head==NULL)
+{
+tail=NULL;
+}
+size--;
+return ele;
+}

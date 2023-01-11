@@ -1,0 +1,36 @@
+LINKED LIST
+
+applying merge sort or bubble sort on ll
+
+LIMITATIONS OF ARRAYS:
+--array are continuous in memory or there is a FIXED SIZE we can't add it.Even using vector we can add element but it's gonna double the size even though it's amortized one still its not good
+
+LINKED LIST
+--LL doesn't have seperate location
+--try to break indivual elements into boxes
+--we are putting boxes at random spaces in the heap
+--we can then link them via pointers
+--it's mo longer in the continuous memory now
+
+
+INTERNAL WORKING OF LINKED LIST:
+--every single item knows about the next item
+--a pointer called head that points to very first node
+--tail is a pointer pointing to the last 
+
+COMPONENTS OF A LINKED LIST
+--every single box contain two components:
+class Node{
+int val	//valus in each node
+Node* next	//next node being pointed by it
+}
+
+PROBLEM WITH LINKED LIST:
+--no idea about total element
+--to access third node run the for loop four times and so on
+
+
+
+
+
+

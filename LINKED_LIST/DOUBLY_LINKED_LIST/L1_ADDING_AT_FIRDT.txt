@@ -1,0 +1,68 @@
+STEPS:
+--we create a new node
+--node.next=head;
+--node.prev=null;
+--head.prev=node;
+--head=node
+--check for null exception
+TIME COMPLEXITY:O(1)
+
+
+PSUEDO CODE:
+if(head->next!=NULL){
+New temp=new Node;
+head->prev=temp;
+temp->prev=null;
+temp->next=head;
+head=temp;
+}
+else{
+temp=new node;
+temp->val=val;
+temp->next=null;
+temp->prev=null;
+head=temp;
+}
+
+
+
+DLL is good when we move backwards in traversals
+
+CODE:
+CLASS dll{
+Node head;
+voif insertFirst(int val){
+Node node=new Node(val);
+node.next=head;
+node.prev=null;
+if(head!=NULL)
+head.prev=null;
+head=node;
+}
+void display(){
+Node node=head;
+while(node!=null){
+cout<<node->val<<" -> ";
+}
+}
+
+class Node{
+Node* next;
+Node* prev;
+int val;
+Node(){
+this.val=val;
+this.next=null;
+this.prev=null;
+}
+}
+
+int main(){
+DLL list=new DLL();
+list.insertFirst(3);
+list.insertFirst(2);
+list.insertFirst(6);
+list.insertFirst(17);
+list.display();
+}
+

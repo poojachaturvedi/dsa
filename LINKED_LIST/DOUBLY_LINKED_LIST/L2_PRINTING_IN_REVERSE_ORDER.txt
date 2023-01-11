@@ -1,0 +1,12 @@
+--tail 
+void displayreverse(){
+Node last=null;
+last=tail;
+while(last!=null){
+cout<<last.val<<" ->";
+last=last->prev;
+}
+cout<<"START";
+}
+
+

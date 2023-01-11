@@ -1,0 +1,30 @@
+if index=0 insertFirst();
+if index==size insertAtLaST();
+
+
+--traverse from 1 to n-1
+--reach behind that node
+--we maintain  and temp
+--using two pointers as well
+
+void InsertAtIndex(int val,int index){
+if(index==0){
+insertFirst(val);
+return;
+}
+if(index==size){
+insertLast(val);
+return;
+}
+Node temp=head;
+for(int i=1;i<index;i++){
+temp=temp->next;
+}
+Node myNode=new Node(val,temp->next);
+temp->next=node;
+}
+
+if index>size
+throw an exception and handle it 
+
+

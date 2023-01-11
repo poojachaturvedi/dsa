@@ -1,0 +1,304 @@
+PRINTING SUBSEQUENCES WHOSE SUM IS K
+--(take|not take)
+--whenever we are carrying a ds with a variable sum1 and if sum1 ==sum then we print that particular sum
+
+#include <bits/stdc++.h>
+using namespace std;
+ 
+// Utility function to find the subsequences
+// whose sum of the element is K
+int subsetSumToK(int arr[], int n,
+            int output[][50], int k){
+     
+    // Base Case
+    if (n == 0) {
+        if (k == 0) {
+            output[0][0] = 0;
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+     
+    // Array to store the subsequences
+    // which includes the element arr[0]
+    int output1[1000][50];
+     
+    // Array to store the subsequences
+    // which not includes the element arr[0]
+    int output2[1000][50];
+     
+    // Recursive call to find the subsequences
+    // which includes the element arr[0]
+    int size1 = subsetSumToK(arr + 1,
+        n - 1, output1, k - arr[0]);
+     
+    // Recursive call to find the subsequences
+    // which not includes the element arr[0]
+    int size2 = subsetSumToK(arr + 1, n - 1,
+                                output2, k);
+ 
+    int i, j;
+     
+    // Loop to update the results of the
+    // Recursive call of the function
+    for (i = 0; i < size1; i++) {
+         
+        // Incremeing the length of
+        // jagged array because it includes
+        // the arr[0] element of the array
+        output[i][0] = output1[i][0] + 1;
+         
+        // In the first column of the jagged
+        // array put the arr[0] element
+        output[i][1] = arr[0];
+    }
+     
+    // Loop to update the subsequence
+    // in the output array
+    for (i = 0; i < size1; i++) {
+        for (j = 1; j <= output1[i][0]; j++) {
+            output[i][j + 1] = output1[i][j];
+        }
+    }
+     
+    // Loop to update the subsequences
+    // which do not include the arr[0] element
+    for (i = 0; i < size2; i++) {
+        for (j = 0; j <= output2[i][0]; j++) {
+            output[i + size1][j] = output2[i][j];
+        }
+    }
+     
+    return size1 + size2;
+}
+ 
+// Function to find the subsequences
+// whose sum of the element is K
+void countSubsequences(int arr[], int n,
+            int output[][50], int k)
+{  
+    int size = subsetSumToK(arr, n, output, k);
+     
+    for (int i = 0; i < size; i++) {
+        for (int j = 1; j <= output[i][0]; j++) {
+            cout << output[i][j] << " ";
+        }
+        cout << endl;
+    }   
+}
+ 
+// Driver Code
+int main()
+{
+    int arr[] = {5, 12, 3, 17, 1, 18, 15, 3, 17};
+    int length = 9, output[1000][50], k = 6;
+ 
+    countSubsequences(arr, length, output, k);
+ 
+    return 0;
+}
+
+
+
+
+PERFECT SUM PROBLEM---
+QUESTION:
+Given an array arr[] of non-negative integers and an integer sum, the task is to count all subsets of the given array with a sum equal to a given sum.
+
+Note: Answer can be very large, so, output answer modulo 109+7
+
+Example 1:
+
+Input: N = 6, arr[] = {2, 3, 5, 6, 8, 10}
+       sum = 10
+Output: 3
+Explanation: {2, 3, 5}, {2, 8}, {10}
+Example 2:
+Input: N = 5, arr[] = {1, 2, 3, 4, 5}
+       sum = 10
+Output: 3
+Explanation: {1, 2, 3, 4}, {1, 4, 5}, 
+             {2, 3, 5}
+
+Your Task:  
+You don't need to read input or print anything. Complete the function perfectSum() which takes N, array arr[] and sum as input parameters and returns an integer value
+
+Expected Time Complexity: O(N*sum)
+Expected Auxiliary Space: O(N*sum)
+
+Constraints:
+1 ≤ N*sum ≤ 106
+0<=arr[I]<=106
+
+
+
+SOLUTION:
+class Solution{
+public:
+	int count=0;
+	int s=0;
+	void func(vector<int>temp,int arr[],int n,int sum,int s,int i){
+	    if(i==n){
+	        if(s==sum)
+	        count++;
+	       return;
+	    }
+	    temp.push_back(arr[i]);
+	    s+=arr[i];
+	    func(temp,arr,n,sum,s,i+1);
+	    temp.pop_back();
+        s-=arr[i];
+        
+        func(temp,arr,n,sum,s,i+1);
+	    
+	}
+	int perfectSum(int arr[], int n, int sum)
+	{
+        // Your code goes here
+        vector<int> temp;
+        func(temp,arr,n,sum,s,0);
+        return count;
+        
+	}
+
+};
+
+//The above code passed 104/323 test cases
+//we therefore need to further optimize the solution
+//this question need to be further improved via DP 
+
+Technique to print only one subsequence:
+--using the global variable 
+
+void print(int i,vector<int> &ds,int s,int sum,int arr[],int n){
+if(i==n){
+if(s==sum and flag==false){
+flag=true;
+for(auto it:ds)
+cout<<it<<" ";
+cout<<endl;
+}
+return;
+
+ds.push_back(arr[i]);
+s+=arr[i];
+print(i+1.d,s,sum,arr,n);
+s-=arr[i];
+ds.pop_back();
+print(i+1,ds,s,sum,arr,n);
+}
+int main(){
+int arr[]={1,2,1};
+int n=3;
+int sum=2;
+vector<int> ds;
+print(0,ds,0,sum,arr,n);
+return 0;
+}
+
+--we can use the functional variable 
+--pick comes back,not pick and comes back
+--if by picking the element we got the subsequence then there is no need to the second part
+--technique to print only one ans
+--in the base case if the condition is satisfied return true
+--else return false
+--whenever you do a function call check if it is true if the ans is yes there is no need to do the recursion further
+
+
+bool print(int i,vector<int> &ds,int s,int sum,int arr[],int n){
+if(i==n){
+if(s==sum and flag==false){
+flag=true;
+for(auto it:ds)
+cout<<it<<" ";
+cout<<endl;
+return true;
+}
+return false;
+}
+
+
+ds.push_back(arr[i]);
+s+=arr[i];
+if(print(i+1.d,s,sum,arr,n)==true){
+return true;
+}
+s-=arr[i];
+ds.pop_back();
+if(print(i+1,ds,s,sum,arr,n)==true){
+return true;
+}
+return false;
+}
+
+int main(){
+int arr[]={1,2,1};
+int n=3;
+int sum=2;
+vector<int> ds;
+print(0,ds,0,sum,arr,n);
+return 0;
+}
+
+
+Q:CHECK NUMBER OF SUBSEQUENCE --IMPORTANT QUESTION 
+INT print(int i,int s,int sum,int arr[],int n){
+if(i==n){
+if(s==sum ){
+return 1;
+return 0;
+}
+
+
+ds.push_back(arr[i]);
+s+=arr[i];
+int l=print(i+1,s,sum,arr,n);
+
+s-=arr[i];
+ds.pop_back();
+int r=print(i+1,s,sum,arr,n)
+
+return l+r;
+}
+
+int main(){
+int arr[]={1,2,1};
+int n=3;
+int sum=2;
+
+cout<<print(0,0,sum,arr,n);
+return 0;
+}
+
+
+OPTIIZATION:
+INT print(int i,int s,int sum,int arr[],int n){
+if(i==n){
+//this can be done iff the element contains positive number only 
+if(s>sum ){
+return 0;
+
+}
+
+
+ds.push_back(arr[i]);
+s+=arr[i];
+int l=print(i+1,s,sum,arr,n);
+
+s-=arr[i];
+ds.pop_back();
+int r=print(i+1,s,sum,arr,n)
+
+return l+r;
+}
+
+int main(){
+int arr[]={1,2,1};
+int n=3;
+int sum=2;
+
+cout<<print(0,0,sum,arr,n);
+return 0;
+}

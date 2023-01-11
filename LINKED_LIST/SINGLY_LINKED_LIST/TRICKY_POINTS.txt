@@ -1,0 +1,10 @@
+PATTERNS REQUIRED:
+--to perform anything first draw it 
+--why head is not moving? --because changing the head changes the entire structure of the linked list but temp or temporary pointer is not
+--if we are changing head we are basically changing the structure
+--node.something=something    //changing something
+--if two or more pointers are pointing to same object and we change it we are actually changing the object
+--why can't we move backward?--we are not maintaining no variable pointing behind 
+--any particular node is itself a ds 
+--why next is of Node type? because there are no indexes involved in this process
+--what is next?

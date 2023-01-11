@@ -1,0 +1,45 @@
+PARAMETERISED RECURSION :
+
+#include<stdio.h>
+#include<iostream>
+using namespace std;
+
+
+
+int f(int i,int mult){
+    if(i==1){
+      return 1;
+    }
+    mult=mult*i;
+    return i*f(i-1,mult);
+}
+
+int main(){
+    int n;
+    cin>>n;
+    int m=f(n,1);
+    cout<<m;
+    return 0;
+}
+
+FUNCTIONAL RECURSION:
+#include<stdio.h>
+#include<iostream>
+using namespace std;
+
+
+
+int f(int i){
+    if(i==1){
+      return 1;
+    }
+    return i*f(i-1);
+}
+
+int main(){
+    int n;
+    cin>>n;
+    int m=f(n);
+    cout<<m;
+    return 0;
+}

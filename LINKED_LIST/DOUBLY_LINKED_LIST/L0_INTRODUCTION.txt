@@ -1,0 +1,15 @@
+DOUBLY LINKED LIST
+--we can go forward as well as backward 
+--same as singly linked list except an addition of prev pointer in each node
+
+
+NODE STRUCTURE:
+--for head prev=null 
+--for tail next=null
+class node{
+int val;
+Node* next;
+Node* prev;
+}
+
+

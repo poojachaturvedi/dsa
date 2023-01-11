@@ -1,0 +1,14 @@
+node find(int val){
+
+node node=head;
+while(node!=NULL)
+{
+if(node.value==val)
+return node;
+}
+node=node.next;
+return null;
+}
+
+
+time complexity:O(N)

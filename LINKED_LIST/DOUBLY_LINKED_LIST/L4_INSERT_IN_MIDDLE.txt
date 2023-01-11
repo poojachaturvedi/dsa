@@ -1,0 +1,32 @@
+CASE 1: index is given to you
+void insertMiddle(int val,int n){
+New temp=new Node();
+temp=head;
+for(int i=1;i<n;i++){
+temp=temp->next;
+}
+New node=new Node();
+node->val=val;
+node->next=temp->next;
+node->prev=temp;
+temp->next=node->next;
+}
+
+
+CASE 2: if any value is given after which you wanna insert
+
+
+void insertMiddle(int val,int after){
+New p=find(val);
+temp=head;
+New node=new Node();
+node->val=val;
+
+node->next=prev->next;
+node->next=prev->next;
+prev->next=node;
+node->prev=pre;
+
+}
+
+TIME COMPLEXITY:o(n)

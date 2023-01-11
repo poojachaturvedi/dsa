@@ -1,0 +1,17 @@
+when tail is there:
+void insertLast(int val){
+Node node=new Node(val);
+
+if(tail==NULL)
+{
+insertfirst(val);
+return ;
+}
+tail->next=new Node();
+tail=node;
+size++;
+
+}
+
+time complexity:O(1)
+

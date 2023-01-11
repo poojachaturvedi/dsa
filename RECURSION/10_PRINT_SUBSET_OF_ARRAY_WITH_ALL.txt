@@ -1,0 +1,84 @@
+Given an integer array nums of unique elements, return all possible subsets (the power set).
+
+The solution set must not contain duplicate subsets. Return the solution in any order.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3]
+Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+Example 2:
+
+Input: nums = [0]
+Output: [[],[0]]
+ 
+
+Constraints:
+
+1 <= nums.length <= 10
+-10 <= nums[i] <= 10
+All the numbers of nums are unique.
+
+APPROACH /INTUITION:
+--we create a function subset inside subset we create a temporary vecot temp
+--we create a global vector ans
+--we make void another func that takes nums,i,temp as input
+--we recurse till i=nums.size and if so return
+--we then call fun(nums,i++,temp) //including the current element and push it back to temp
+--we again call the same //excluding the element
+
+SOLUTION:
+class Solution {
+public:
+    vector<vector<int>> ans;
+    void subset(vector<int>&nums,int i,vector<int> temp){
+        if(i==nums.size()){
+            ans.push_back(temp);
+            return;
+        }
+        subset(nums,i+1,temp);
+        temp.push_back(nums[i]);
+        subset(nums,i+1,temp);
+    }
+    vector<vector<int>> subsets(vector<int>& nums) {
+        vector<int> temp;
+        subset(nums,0,temp);
+        return ans;
+    }
+};
+
+
+
+
+Voif func(int i,vector<int> &ds,int arr[],int n){
+if(i==n)
+{
+for(auto it:ds){
+cout<<it<<" ";
+}
+
+if(ds.size()==0)
+{
+cout<<"{}";
+}
+cout<<endl;
+return;
+}
+	//pick condition
+	ds.push_back(arr[i]);
+	print(i+1,ds,arr,n);
+	ds.pop_back();
+
+	//not pick condition
+	print(i+1,ds,arr,n);
+}
+main(){
+int arr=[1,2,3];
+
+int n=3;
+vector<int> ans;
+print(0,ds,arr,n);
+}
+
+

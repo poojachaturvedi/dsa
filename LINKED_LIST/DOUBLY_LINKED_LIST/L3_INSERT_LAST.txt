@@ -1,0 +1,32 @@
+void insert_last(){
+New node=new Node();
+node=head;
+while(node->next!=NULL){
+node=node->next;
+}
+new temp=new Node();
+temp->val=val;
+temp->prev=node;
+node->next=temp;
+temp->next=null;
+if(head==NULL){
+node.prev=Null;
+head=node;
+return;
+}
+}
+
+
+TIME COMPLEXITY: O(N)
+
+
+IF TAIL IS PROVIDED
+void insertlast(){
+new temp=new Node();
+temp->next=null;
+temp->prev=tail;
+tail=temp;
+}
+TIME COMPLEXITY:O(1)
+
+

@@ -1,0 +1,88 @@
+USING THE TAIL POINTER MAKES THE IMPLEMENTATION EASIER THAN ONE WITH HEAD ONLY
+tail.next=new Node();
+tail=node;
+
+--once we create a node we need to:
+create the node and insert value
+AT HEAD:
+--firstly make a new node 
+--and then node->next=Head
+--Head=next;
+
+IN THE MIDDLE:
+for(i=0;i<n;i++)
+{
+new node;
+prev.next=new node();
+node.next=prev.next;
+prev=node;
+}
+
+
+AFTER TAIL:
+--make new node
+--tail.next=node;
+--tail=node
+
+//if there is any node at first position
+if(tail==NULL and head==Null){
+size+=1;
+}
+
+
+to display the node
+WRONG WAY:
+
+--but the issue is that this will lead to a change in structure as we are changing the structure
+while(head->next!=NULL){
+cout<<head.val;
+head=head->next
+}
+SOLUTION:
+--therefore we use the temp to solve this issue
+
+
+class Node{
+private:
+Node* head;
+Node* tail;
+int val;
+Node* next;	//internally inks the node
+int size;
+
+Node(){
+this.size=0;
+}
+
+void InsertAtHead(int x){
+New node=new Node(val);
+node->next=head;
+head=node;
+if(tail==NULL){
+tail=head;
+}
+size+=1;
+}
+
+void deleteNode(){
+}
+void display(){
+//temporary pointer 
+Node temp=head;
+while(temp->next!=NULL){
+cout<<temp->val<<"->";
+temp=temp->next;
+}
+
+
+int main(){
+Node n1=new Node();
+n1.add(2);
+n1.insertAthead(3);
+n1.display();
+}
+
+
+
+
+
