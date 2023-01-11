@@ -1,0 +1,87 @@
+brute force approach:
+this approch passed 41/43 test cases
+int n=nums.size();
+        int count=0;
+        int highest=0;
+        int ele=nums[0];
+        for(int i=0;i<n;i++){
+            count=1;
+            for(int j=0;j<n;j++){
+                
+                if(nums[i]==nums[j]){
+                    count++;
+                    if(count>highest){
+                        highest=count;
+                        ele=nums[i];
+                    }
+                  
+                }
+            }
+            count=0;
+        }
+    return ele;
+
+
+
+using hash map:
+  int majorityElement(vector<int>& nums) {
+       unordered_map<int,int>mp;
+       int highest=0;
+    int ele=nums[0];
+        for (int i=0;i<nums.size();i++) {
+           mp[nums[i]]++;
+        }
+       for(auto it:mp){
+           int curr=it.second;
+           if(curr>highest){
+               highest=it.second;
+               ele=it.first;
+           }
+       }
+
+        return ele;
+
+    }
+O(NLOGN)
+passed all the test cases
+
+using sorting 
+O(N)
+ int majorityElement(vector<int>& nums) {
+     
+       sort(nums.begin(),nums.end());
+       int highest=0;
+       int ele=nums[0];
+        int curr=1;
+       for(int i=0;i<nums.size()-1;i++){
+         
+           if(nums[i]==nums[i+1]){
+               curr++;
+               if(highest<curr){
+
+                   highest=curr;
+                   ele=nums[i];
+               }
+           }
+           else{
+               curr=1;
+           }
+       }
+        return ele;
+    }
+
+moore's voting algorithm
+
+int majority element(vector<int> &nums){
+int count=0;
+for(int i=0;i<n;i++)
+{
+if(count==0)
+candidate=arr[i];
+}
+if(Candidate==count)
+count+=1;
+else
+coint=-1;
+
+}}\

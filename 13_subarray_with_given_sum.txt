@@ -1,0 +1,14 @@
+int subarraySum(vector<int>& nums, int k) {
+        int count=0;
+        unordered_map<int,int> a;
+        int sum=0;
+        for(int i=0;i<nums.size();i++){
+            a[sum]++;
+            sum+=nums[i];
+            if(a.count(sum-k)>0){
+                count+=a[sum-k];
+            }
+
+        }
+        return count;
+    }

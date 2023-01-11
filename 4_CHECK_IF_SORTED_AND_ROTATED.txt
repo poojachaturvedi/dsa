@@ -1,0 +1,10 @@
+bool isSortedandRotated(vector<int>nums,int n){
+int count=0;
+for(int i=1;i<n;i++)
+{
+count++;
+}
+if(nums[i-1]>nums[0])
+count++;
+return count>=1;
+}
