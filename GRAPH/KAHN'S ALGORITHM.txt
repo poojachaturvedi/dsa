@@ -1,0 +1,44 @@
+KAHN'S ALGORITHM 
+--topo sort is the linear ordering of vertices such that if there is  a vertex u to v then u always comes before v
+--only valid in dag(directed acyclic graph)
+--using BFS 
+--using queue
+--we are going to use the concept of indegree along with the non incoming edges
+--insert all nodes with indegree zero take them out of the queue and remove the indegree 
+
+traverse in the node and increase the indegree to one
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	    // code here
+	    queue<int>q;
+	    vector<int> indegree(V,0);
+	    vector<int> ans;
+	    vector<bool> vis(V,false);
+	    for(int i=0;i<V;i++){
+	        for(auto it: adj[i]){
+	            indegree[it]++;
+	        }
+	    }
+	    for(int i=0;i<V;i++){
+	        if(indegree[i]==0){
+	            q.push(i);
+	            
+	        }
+	    }
+	    while(!q.empty()){
+	        int ele=q.front();
+	        q.pop();
+	        ans.push_back(ele);
+	        for(auto it:adj[ele]){
+	            indegree[it]--;
+	        
+	        if(indegree[it]==0)
+	        q.push(it);
+	        }
+	    }
+	    return ans;
+	}
+
+
+Time complexity: O(V+E)
+every edge is considered once

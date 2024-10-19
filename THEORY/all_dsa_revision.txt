@@ -1,0 +1,49 @@
+ARRAY:
+Applications : used to implement other data structures like stack , queue to store data etc,Contact lists on mobile phones, Matrices image processing, computer graphics, and many more , in online ticket booking portals, IoT applications use arrays as we know that the number of values in an array will remain constant, and also that the accessing will be faster . speech processing, where each speech signal is represented by an array , the viewing screen of any desktop/laptop is also a multidimensional array of pixels
+
+linked list
+applications:Implementation of stacks and queues
+Implementation of graphs: Adjacency list representation of graphs is the most popular which uses a linked list to store adjacent vertices.
+Dynamic memory allocation: We use a linked list of free blocks.
+Maintaining a directory of names
+Performing arithmetic operations on long integers
+Manipulation of polynomials by storing constants in the node of the linked list
+representing sparse matrices
+Image viewer – Previous and next images are linked and can be accessed by the next and previous buttons.
+Previous and next page in a web browser – We can access the previous and next URL searched in a web browser by pressing the back and next buttons since they are linked as a linked list.
+Music Player – Songs in the music player are linked to the previous and next songs. 
+Useful for implementation of a queue. Unlike this implementation, we don’t need to maintain two-pointers for the front and rear if we use a circular linked list. We can maintain a pointer to the last inserted node and the front can always be obtained as next of last.
+Circular lists are useful in applications to go around the list repeatedly. For example, when multiple applications are running on a PC, it is common for the operating system to put the running applications on a list and then cycle through them, giving each of them a slice of time to execute, and then making them wait while the CPU is given to another application. It is convenient for the operating system to use a circular list so that when it reaches the end of the list it can cycle around to the front of the list.
+
+
+STACK
+Register Stack: This type of stack is also a memory element present in the memory unit and can handle a small amount of data only. The height of the register stack is always limited as the size of the register stack is very small compared to the memory.
+Memory Stack: This type of stack can handle a large amount of memory data. The height of the memory stack is flexible as it occupies a large amount of memory data. 
+APPLICATIONS:tack is used for evaluating expression with operands and operations.
+Matching tags in HTML and XML
+Undo function in any text editor.
+Infix to Postfix conversion.
+Stacks are used for backtracking and parenthesis matching.
+Stacks are used for conversion of one arithmetic notation to another arithmetic notation.
+Stacks are useful for function calls, storing the activation records and deleting them after returning from the function. It is very useful in processing the function calls.
+Stacks help in reversing any set of data or strings.
+CD/DVD stand.
+Stack of books in a book shop.
+Undo and Redo mechanism in text editors.
+The history of a web browser is stored in the form of a stack.
+Call logs, E-mails, and Google photos in any gallery are also stored in form of a stack.
+YouTube downloads and Notifications are also shown in LIFO format(the latest appears first ).
+ADVANTAGES OF STACK:
+Stack helps in managing data that follows the LIFO technique.
+Stacks are be used for systematic Memory Management.
+It is used in many virtual machines like JVM.
+When a function is called, the local variables and other function parameters are stored in the stack and automatically destroyed once returned from the function. Hence, efficient function management.
+Stacks are more secure and reliable as they do not get corrupted easily.
+Stack allows control over memory allocation and deallocation.
+Stack cleans up the objects automatically.
+DISADVANTAGES OF STACK:
+Stack memory is of limited size.
+The total of size of the stack must be defined before.
+If too many objects are created then it can lead to stack overflow.
+Random accessing is not possible in stack.
+If the stack falls outside the memory it can lead to abnormal termination

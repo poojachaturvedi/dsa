@@ -1,0 +1,54 @@
+The question is asking the starting point of the cycle in a linkedlist 
+
+concept used : slow and fast pointer 
+
+If we assume the point where cycle starts is at the distance of m and let the n be the length of the remaining cycle.Let's assume that slow and fast pointer meet in this cycle at a distance of k (if there is a cycle then slow and fast pointer will definetly meet we can compare this to analogy to 2 people running in a circle one having half then  speed of other then at some point in time they will definetly meet each other if they keep running ) and let one has covered x1 number of rounds and other has covered x2 number of rounds then 
+we need to find m in terms of n and k
+distance travelled by first:distance travelled linearly+no of rounds*length of round+point where they meet
+m+(x1.n)+k=2(m+(x2.n)+k)
+m+x1.n+k=2m+x2n+k
+x1.n-2x2.n-k=m
+n(x1-2x2)-k=m
+now x1 and x2 are integer then x1-2x2 will also be a integer let's assume it to be y
+ny-k=m
+n(y-1)+n-k=m
+let n-k be d
+n(y-1)+d=m
+again replacing the y-1 by z
+nz+d=m
+nrounds+d=m
+
+ptr1 will travel m distance and ptr2 will travel nz+d to meet after completing certain number of rounds and hence they are going to meet at this point
+
+
+
+ ListNode *detectCycle(ListNode *head) {
+        //intializing the slow and fast pointer as the starting point of the node
+       ListNode* slow=head,*fast=head;
+       //checking if cycle exists if somehow slow and fast pointers meet then cycle definetly exists
+
+        while(fast!=NULL && fast->next!=NULL){
+            //moving slow pointer one step at a time and fast pointer 2 step at a time
+        slow=slow->next;
+        fast=fast->next->next;
+        //if fast and slow pointer meet then we break out of the loop as cycle exist
+        if(fast==slow)
+        break;
+        }
+        //as the above loop can break in two conditions we are checking if loop was exit due to:
+        //case a : fast and slow met -->cycle exist
+        //case 2:fast or fasr->next doesn't exist -->cycle doesn't exist
+        //in case cycle doesn't exist we need to return NULL
+        if(fast==NULL || fast->next==NULL) return NULL;
+        //setting pointer two at the start of the cycle and pointer 2 at the start of ll
+        //wherever pointer 1 and pointer 2 will meet that's the start of cycle as we are sure from above condition that cycle  is existing 
+        ListNode* ptr1=head, *ptr2=slow;
+        //at whichever point pointer 
+        while(ptr1!=ptr2){
+        ptr1=ptr1->next;
+        ptr2=ptr2->next;
+        }
+        return ptr1;
+
+        
+    }

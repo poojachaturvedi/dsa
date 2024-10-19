@@ -1,0 +1,33 @@
+Topological sorting
+--exists on DAG directed acyclic graph
+--linear ordering og vertices such that id there is an edge between u and v, u appears before v in that ordering
+
+--any linear ordering of vertices such that if there is an edge between u and v , u always appear before v
+
+5 4 2 3 1 0
+4 5 2 3 1 0
+
+
+there can be multiple linear ordering
+
+
+why in DAG only?
+because in undirected we mean that if u is to v so is v to u
+why acylic ?
+if there is a cycle then there can't be any linear ordering or there is a cyclic dependancy
+
+
+declare a visited array and make sure everything is marked as zero intially
+start dfs call from the zero and mark it as visited
+stack 
+if there is no neighbour or in case they are visited no further calls  and push it in stack
+take out the element one by one this is one of the linear orderings that we can get this is what we call topological sort
+
+time commplexity: o(v+e) for directed graph in the worst case
+
+
+Intuition:
+the nodes whose dfs is complete is pushed in the stack 
+
+
+        

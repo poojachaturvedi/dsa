@@ -1,0 +1,29 @@
+Bipartite using dfs algorithm 
+--A graph that can be colored in 2 colors such that no two adjacent nodeds have same color
+--odd length cycle is not bipartite
+--linear graph is bipartite
+--even length cycle is bipartite
+bool isPartite(int V,vector<int> adj[]){
+int color[V];
+for(int i=0;i<V;i++){
+if(color[i[==-1)
+{
+dfs(i,0,color,adj)==false;
+return false;
+}
+}
+return true;
+}
+
+bool dfs(int start,int col,vector<int> &colors,vector<vector<int>> &graphs){
+color[node]=col;
+for(auto it:adj[node]){
+if(color[it]==-1){
+dfs(it,1-col,color,adj);
+}
+else if(color[it]==col){
+return false;
+}
+}
+
+}

@@ -1,0 +1,85 @@
+Number of province
+no of province here is the number of disconnected component
+1-2-3   4-5-6 7-8
+ans:3
+
+
+BFS/DFS traversal for the disconnected components
+No of times the traversal is called 
+
+
+visited array of size  n+1 and mark every index as zero or false
+count=0;
+for(i=1 ;i<=v;i++){
+
+if(vis[i]==0){
+count++;
+dfs(i);
+}
+}
+
+DFS call makes sure that the element is marked as soon as it is visited
+
+
+SPACE COMPLEXITY
+visited array--O(N)
+recursion stack--O(N)
+O(N)
+
+TIME COMPLEXITY
+N+(V+2E)
+we are making dfs call for all the n nodes
+the inner loop runs for the dfs time
+partial dfs somes about the total dfs
+tym complexity depends on the number of neighbour nodes
+
+
+
+
+ADJACENCY MATRIX:input
+//adjacencty matrix majorly works with only the smaller inputs
+
+
+//dfs traversal 
+
+void dfs(int node,vector<int> adjLs,int vis[]){
+vis[node]=1;
+for(auto it:adjLs[node]){
+if(!vis[it]){
+dfs(it,adjLs,vis);
+}
+}
+}
+
+
+//making an adjacency list for the given matrix 
+vectorint> adjLs[v];
+for(int i=0;i<V;i++){
+	for(int j=0;j<V;j++){
+		//pushinng element inside the matrix 
+		//making sure that we are not adding the element to its own adjacency matrix
+		if(adj[i][j]==1 && i!=j){
+			adjLs[i].push_back(j);
+			adjLs[j].push_back(i);
+		}
+	}
+}
+
+
+//making a visited array  and marking it as zero for all the elements as unvisited
+int vis[V]={0};
+
+
+//doing the traversal with number of nodes
+for(int i=0;i<V;i++){
+	if(!vis[i]){
+		cnt++;
+		dfs(i,adjLs,vis);
+	}
+}
+
+
+
+
+
+

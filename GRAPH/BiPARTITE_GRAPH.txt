@@ -1,0 +1,96 @@
+--if we are able to color the graph in such a way that no two adjacent nodes have same color
+--we can always color a linear graph as they never have a cycle
+--linear graph with no cycle are always bi-partite
+--any graph with even cycle length can also be bipartite
+--the graph with odd cycle length can never be bipartite
+
+
+USING BFS ALGORITHM
+
+--Queue
+--visited array
+-1:not yet visited
+0:color1
+1:color2
+
+
+put it in queue and assign it with color 
+
+
+	  3
+	 /  \
+1 ----2    4---7---8
+      |    | 
+      |    |
+      6----5
+
+if neighbour node is not colored then the adjacent node should have a color which is not same as the current color
+private:
+bool check(int start,int V,vector<int> adjLs[])
+{
+queue<int> q;
+q.push(start);
+while(!q.empty()){
+int node=q.front();
+q.pop();
+for(auto it:adjLs[node]){
+if(color[it]==-1){
+color[it]=!color[node];
+
+q.push(it);
+}
+else if(color[it]==color[node]){
+return false;
+}
+
+}
+}
+return true;
+}
+
+
+bool isBipartite(int V,vector<int> adjLs[]){
+
+for(int i=0;i<V;i++){
+color[i]=-1;
+}
+for(int i=0;i<V;i++){
+if(check(i,V,adjLs[])
+return false;
+}
+return true;
+
+
+vector<int> color(graph.size(),-1);
+        for(int i = 0;i<graph.size();i++)
+        {
+            if(color[i]==-1)
+            {
+                queue<int> q;
+                q.push(i);
+                color[i] = 0;
+                while(!q.empty())
+                {
+                    int curr = q.front();
+                    q.pop();
+                    for(auto x : graph[curr])
+                    {
+                        if(color[x]==-1)
+                        {
+                            color[x] = 1 - color[curr];
+                            q.push(x);
+                        }
+                        else if(color[x]==color[curr])
+                        {
+                            return false;
+                        } 
+}
+}
+}
+}
+return true;
+}
+
+
+
+

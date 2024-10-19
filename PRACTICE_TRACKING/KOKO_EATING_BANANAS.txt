@@ -1,0 +1,81 @@
+n piles
+ith pile -- piles[i] banana
+no of hours in which guard will come back=8
+speed of eating banana- k 
+if(pile[i]<k){
+eats whole pile and will not eat more bananas at that ourh
+}
+return k such that she can eat all bananas in h hours
+
+
+[3,6,7,11]
+
+pile 1--3
+pile 2--6
+pile 3--7
+pile 4--11
+h=8 
+
+
+speed :5
+3 
+5
+1
+5
+2
+5
+5
+4
+
+speed:4
+3
+4
+2
+4
+3
+4
+4
+3
+ 
+[30,11,23,4,20] h=5
+no of piles =total hour 
+maximum no of bananas 
+
+[30,11,23,4,20]
+h=6
+ans:23
+
+ans will always between the 1 and maximum element
+then we can check indiviual element but we need to check for best answer from the range of answers
+o(log n)
+
+
+
+
+
+but we need to return the minimum bananas
+
+
+
+return how many bananas does coco need to eat from each pile so that he can finish eating the
+entire bananas
+
+isPossible(piles,mid,h){
+//cheeck if it is possible to eat all bananas with speed of h bananas per hour
+
+
+mid/h <h
+}
+
+//here mid will represent the speed or the total bananas per hour
+while(l<=h)
+{
+if(isPossible(piles,mid,h){
+h=mid-1;  //towards left
+}
+else{
+l=mid+1;  //towards right
+}
+}
+return mid;
+

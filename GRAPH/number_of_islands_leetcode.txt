@@ -1,0 +1,65 @@
+different from
+
+
+--we can use dfs or bfs to m
+--mark an island up bottom left and right index only 
+--x,y-1  x-1,y  x,y+1   x+1,y
+--here we are not going diagonally
+
+
+class Solution {
+public:
+  void bfs(int row,int col,vector<vector<int>>&vis,vector<vector<char>>& grid){
+        queue<pair<int,int>> q;
+
+        q.push(make_pair(row,col));
+
+        vis[row][col] = 1;
+
+        
+
+        while(!q.empty()){
+
+            int x = q.front().first;
+
+            int y = q.front().second;
+            vector<int> dr={0,0,1,-1};
+            vector<int> dc={-1,1,0,0};
+
+            q.pop();
+
+            for(int i=0;i<dr.size();i++){
+
+                    int nrow = x + dr[i];
+
+                    int ncol = y + dc[i];
+
+                    if(nrow >= 0 && nrow < grid.size() && ncol >= 0 && ncol < grid[0].size() && vis[nrow][ncol] == 0 && grid[nrow][ncol]=='1'){
+
+                        q.push(make_pair(nrow,ncol));
+
+                        vis[nrow][ncol] = 1;
+
+                    }
+            }
+        }
+
+    }
+    int numIslands(vector<vector<char>>& grid) {
+        int n=grid.size();
+        int m=grid[0].size();
+        int count=0;
+        vector<vector<int>> vis(n,vector<int>(m,0));
+        for(int row=0;row<n;row++){
+            for(int col=0;col<m;col++){
+
+                if(!vis[row][col] && grid[row][col]=='1'){
+                    count++;
+                    bfs(row,col,vis,grid);
+                }
+            }
+
+        }
+        return count;
+    }
+};

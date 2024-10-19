@@ -1,0 +1,76 @@
+if(children>money|| money<8){
+return -1;
+}
+int quotient=money/8;
+int remainder=money%8;
+//in case children*8==money
+if(quotient==children and remainder==0){
+return children;
+}
+56 2
+q=7
+7>2
+8 48
+if(quotient>=children){
+ return children-1;
+}
+;
+60 8
+q=7
+r=4
+children
+
+if(remainder==4 && (children-quotient)==1){
+return children-2;
+}
+
+
+if(remainder>=(children-quotient)){
+return quotient;
+}
+
+int left=children-quotient;
+while(remainder<left){
+left++;
+remainder+=8;
+quotient--;
+}
+return quotient
+
+
+
+   
+        if(children>money){
+        return -1;
+        }
+        if(money<8){
+            return 0;
+        }
+            int quotient=money/8;
+            int remainder=money%8;
+        
+            if(quotient==children and remainder==0){
+            return children;
+            }
+        //if quotient is greater than number of children at least one child will get more than 8 so as to ensure that rest get 8 or less
+            if(quotient>=children){
+             return children-1;
+            }
+        //if remainder is 4 then we need to check if there is a possibility to reaarange it in such a way
+            if(remainder==4 && (children-quotient)==1){
+            return children-2;
+            }
+        
+            if(remainder>=(children-quotient)){
+            return quotient;
+            }
+            int left=children-quotient;
+            while(remainder<left){
+            left++;
+            remainder+=8;
+            quotient--;
+        }
+        return quotient;
+
+
+

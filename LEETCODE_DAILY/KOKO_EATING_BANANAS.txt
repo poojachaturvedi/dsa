@@ -1,0 +1,58 @@
+BINARY SEARCH
+//this is the constraint where we will run the binary search 
+maximum bananas-- maximum element ( the number of element=number of hours )
+minimum bananas-- one
+
+
+
+
+//checks if it is possible to eat all bananas with speed of mid speed/hour such that 
+//time calculated
+bool isValid(vector<int> &piles,int h,int mid){
+//time taken if we have a speed of mid
+long long mid_t=0;
+for(int i=0;i<piles.size();i++){
+
+if(piles[i]%mid==0){
+//if we are able to eat the bananas at speed of mid bananas per hour then the time taken 
+mid_t=piles[i]/mid;
+
+}
+else{
+//if the given time is insufficient then we need to go for another round of eating bananas so we  are adding one to it
+mid_t+=piles[i]/mid+1;
+}
+}
+if(mid_t>h){
+return false;
+}
+return true;
+}
+
+
+int minEatingSpeed(vector<int> &piles,int h){
+//the value of the no of bananas koko can eat will lie somewhere between one and highest value
+
+//highest value will be a case when no of piles is equal to h 
+
+
+int ans=0,low=1,high=0,n=piles.size();
+//calculating the maximum value of k
+for(int i=0;i<n;i++){
+if(piles[i]>high){
+high=piles[i];
+}
+while(low<=high){
+//findinf middle element
+int mid=low+(high-low)/2;
+//checking if for the value of mid the answer is valid if yes then we check for lower values and intialize ans to mid
+if(isValid(piles,h,mid)){
+ans=mid;
+high=mid-1;
+}
+else{
+low=mid+1;
+}
+}
+return ans;
+}

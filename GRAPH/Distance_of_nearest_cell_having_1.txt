@@ -1,0 +1,79 @@
+No diagonal distance is considered
+onlly check in row and column distance
+grid:
+1 0 1
+1 1 0
+1 0 0
+
+
+we need to find the nearest one 
+0 1 0
+0 0 1
+0 1 2
+return the above 
+
+
+BFS-- 
+take one step in all the four directions then we will track the all four corners of it
+1 step--they will reach all the zero at a distance of one
+if we take another step we get the zero at a  distance of one
+BFS because we want all of them to traverse 
+step-by-step:bfs
+
+Approach
+push all the one in the queue  and mark them visited
+
+vector<vector<int>>nearest(vector<vector<int>>grid)
+	{
+	    int n = grid.size(); 
+	    int m = grid[0].size(); 
+	    // visited and distance matrix
+	    vector<vector<int>> vis(n, vector<int>(m, 0)); 
+	    vector<vector<int>> dist(n, vector<int>(m, 0)); 
+	    // <coordinates, steps>
+	    queue<pair<pair<int,int>, int>> q; 
+	    // traverse the matrix
+	    for(int i = 0;i<n;i++) {
+	        for(int j = 0;j<m;j++) {
+	            
+	            if(grid[i][j] == 1) {
+	                q.push({{i,j}, 0}); 
+	                vis[i][j] = 1; 
+	            }
+	            else {
+	                
+	                vis[i][j] = 0; 
+	            }
+	        }
+	    }
+	    
+	    int delrow[] = {-1, 0, +1, 0}; 
+	    int delcol[] = {0, +1, 0, -1}; 
+	    
+	    
+	    while(!q.empty()) {
+	        int row = q.front().first.first; 
+	        int col = q.front().first.second; 
+	        int steps = q.front().second; 
+	        q.pop(); 
+	        dist[row][col] = steps; 
+	        for(int i = 0;i<4;i++) {
+	            int nrow = row + delrow[i]; 
+	            int ncol = col + delcol[i]; 
+	            if(nrow >= 0 && nrow < n && ncol >= 0 && ncol < m 
+	            && vis[nrow][ncol] == 0) {
+	                vis[nrow][ncol] = 1; 
+	                q.push({{nrow, ncol}, steps+1});  
+	            }
+	        }
+	    }
+	    return dist; 
+	}
+
+
+Time Complexity:
+n*m --for loops
+while loop--n*m*4
+Space Complexity:
+n*m for the matrix
+

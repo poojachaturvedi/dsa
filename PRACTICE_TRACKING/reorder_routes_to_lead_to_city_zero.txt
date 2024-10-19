@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int minReorder(int n, vector<vector<int>>& connections) {
+        vector<vector<pair<int, bool>>> adj_list(n);
+        int count = 0;
+        for(int i=0; i<connections.size(); i++){
+            adj_list[connections[i][0]].push_back({connections[i][1], false});
+            adj_list[connections[i][1]].push_back({connections[i][0], true});
+        }
+        queue<pair<int, bool>> q;
+        q.push({0, true});
+        vector<bool> vis(n, false);
+        vis[0] = true;
+        while(!q.empty()){
+            int node = q.front().first;
+            q.pop();
+            for(int i=0; i<adj_list[node].size(); i++){
+                if(!vis[adj_list[node][i].first] && adj_list[node][i].second == false){
+                    count++;
+                }
+                if(!vis[adj_list[node][i].first]) {
+                    q.push(adj_list[node][i]);
+                    vis[adj_list[node][i].first] = true;
+                }
+            }
+        }
+        return count;
+    }
+};

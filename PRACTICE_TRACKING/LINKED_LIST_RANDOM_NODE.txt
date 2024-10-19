@@ -1,0 +1,80 @@
+TWO APPROACHES THE PROBLEM 
+
+
+
+APPROACH 1: WITHOUT VECTOR
+--find the length of linked list 
+--use random function to generate random value and then iterate through the linked list to get the random value 
+class Solution {
+public:
+	//stores len of ll
+    int len=0;
+	//temp node to store the position of head as we are changing the value of head in the loop below 
+    ListNode* start;
+    Solution(ListNode* head) {
+     start=head;
+     while(head!=NULL){
+        
+        head=head->next;
+       len++;
+     }   
+    }
+    
+    int getRandom() {
+	//temp node to hold value of head we found 
+      ListNode* temp=start;
+	//generating the random value 
+      int random=(rand()%len); 
+	//iterating through the ll to get the value
+      for(int i=0;i<random;i++){
+          temp=temp->next;
+      }
+      return temp->val;
+    }
+};
+
+
+time complexity(of random function):O(N) //iterating through the ll 
+space complexity:O(1)  //no extra space used except some variables
+
+APPROACH 2: WITH VECTOR(better approach)
+--find the length of linked list and store the elements of ll in a vector
+--in the random function simply access the elements by the index at the random values
+
+
+class Solution {
+public:
+	//to store the number of elements in the linked list 
+    int len;
+	//vector to store the elements of the linked list
+    vector<int> v;
+    Solution(ListNode* head) {
+     //traversing in the ll
+     while(head!=NULL){
+	//storing elements in the ll
+        v.push_back(head->val) ;
+        head=head->next;
+       
+     } 
+	//calculating number of linked list elements
+     len=v.size();  
+    }
+    
+    int getRandom() {
+      //using inbuilt random function to generate a random number
+	//as the number generated can be huge so  we are taking modulus
+	//so that value lies in the index range and we don't get an 
+	//indexoutofbound error
+	//further since no of nodes will always be in range [1,10^4] we need not worry about divisonbyzeroerror
+      int random=(rand()%len); 
+      return v[random];
+    }
+};
+
+
+
+
+time complexity(of random function):O(1) //only accessing the element
+space complexity: O(n) //to store the element of ll in a vector
+
+approach 2 is the preferred approach due to reduction in the time complexity

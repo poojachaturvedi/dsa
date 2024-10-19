@@ -1,0 +1,39 @@
+NULL-->google <--> linkedin <--> facebook <-->leetcode
+we can go forward only till leetcode and come back only till google
+
+
+--constructor :gives us a home page from where we hace to start
+--if there is a new page that is visited from this particular page then the future searches get deleted
+--back tells how many time we need to go back
+--we can use the dll and we can use one pointer to keep track of where  we stamd in the browser history
+--in stl we can us use the itereator
+
+public;
+list<string> history;
+list<string>:: iterator it;
+BrowserHistory(string homepage){
+history.push_back(homepage);
+it=history.begin();
+}
+void visit(string url){
+	//deleting elements after the current page change
+auto del=it;
+del++;
+history.erase(del,history.end());
+//pushing the new url
+history.push_back(url);
+//making it come on the current page
+it++;
+}
+string back(int steps){
+while(it!=history.begin() && steps--){
+it--;
+}
+return *it;
+}
+
+string forward(int steps){
+while(it!=(--history.end()) && steps--){
+it++;
+}return *it;
+}

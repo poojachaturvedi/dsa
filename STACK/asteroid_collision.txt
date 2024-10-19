@@ -1,0 +1,43 @@
+stack<int> s;
+for(int i=0;i<asteroids.size();i++){
+//if there is no asteroid in the place or it is greater than zero
+if(s.empty || asteroids[i]>0){
+s.push(asteroids[i]);
+}
+//if the negative asteroid is encountered
+//if top of stack is negative then we will push it in stck 
+//if top of stack is posi
+else{
+while(true){
+int top=s.top();
+if(top<0){
+s.push(asteroids[i]);
+break;
+}
+//if an asteroid of equal strength in opposite direction is encountered then both will explode
+//then we will be needing to pop the element
+else if(top==-asteroids[i]){
+s.pop();
+break;
+}
+//when a  smaller mass asteroid gets collided with the larger mass asteroid it will simply explode so we simply break from it
+
+else if(top>(-asteroids[i])){
+break;
+}
+//the bigger asteroid comes in place
+else{
+s.pop();
+if(s.empty()){
+s.push(asteroids[i]);
+break;
+}
+
+
+}
+
+vector<int> output(s.size(),0);
+for(int i=s.size()-1;i>=0;i++){
+output[i]=s.pop();
+}
+return output;

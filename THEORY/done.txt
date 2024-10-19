@@ -1,0 +1,104 @@
+BINARY TREE
+Binary Tree is defined as a Tree data structure with at most 2 children. Since each element in a binary tree can have only 2 children, we typically name them the left and right child.
+
+representation:
+A Binary tree is represented by a pointer to the topmost node of the tree. If the tree is empty, then the value of the root is NULL.
+
+Binary Tree node contains the following parts:
+
+Data
+Pointer to left child
+Pointer to right child
+
+
+basic operations:insertions,deletion ,searching and traversing
+finding the height of the tree,find the level of the tree,finding the size od the entire tree
+
+
+BINARY SEARCH TREE
+Binary Search Tree is a node-based binary tree data structure which has the following properties:
+
+The left subtree of a node contains only nodes with keys lesser than the node’s key.
+The right subtree of a node contains only nodes with keys greater than the node’s key.
+The left and right subtree each must also be a binary search tree.
+
+
+MAX-HEAPS
+A Heap is a special Tree-based data structure in which the tree is a complete binary tree.
+
+Operations of Heap Data Structure:
+Heapify: a process of creating a heap from an array.
+Insertion: process to insert an element in existing heap time complexity O(log N).
+Deletion: deleting the top element of the heap or the highest priority element, and then organizing the heap and returning the element with time complexity O(log N).
+Peek: to check or find the most prior element in the heap, (max or min element for max and min heap).
+
+
+Types of Heap Data Structure
+
+Generally, Heaps can be of two types:
+
+Max-Heap: In a Max-Heap the key present at the root node must be greatest among the keys present at all of it’s children. The same property must be recursively true for all sub-trees in that Binary Tree.
+Min-Heap: In a Min-Heap the key present at the root node must be minimum among the keys prese
+
+
+
+APPLICATION OF BINARY TREE:
+most application use tries ,BST and B-trees
+mainly used for searching and sorting
+routing tables:The tree data structure will store the location of routers based on their IP addresses. Routers with similar addresses are grouped under a single subtree.
+decision tree:Binary trees can also be used for classification purposes. A decision tree is a supervised machine learning algorithm. The binary tree data structure is used here to emulate the decision-making process.
+expression evaluation:The leaves of the binary tree are the operands while the internal nodes are the operators.
+
+The expression is evaluated by applying the operator(s) in the internal node to the operands in the leaves.
+The leaves of the binary tree are the operands while the internal nodes are the operators.
+
+Sorting
+Binary search trees, a variant of binary trees are used in the implementation of sorting algorithms to order items. A binary search tree is simply an ordered or sorted binary tree such that the value in the left child is less than the value in the parent node. At the same time, the values in the right node are greater than the value in the parent node.
+
+To complete a sorting procedure, the items to be sorted are first inserted into a binary search tree. To retrieve the sorted items, the tree is traversed using in-order traversal.
+
+For more details on sorting in a binary tree, check out our article on sorting elements in binary trees.
+
+Indices for database
+6. Indices for Databases
+In database indexing, B-trees are used to sort data for simplified searching, insertion, and deletion. It is important to note that a B-tree is not a binary tree, but can become one when it takes on the properties of a binary tree.
+
+The database creates indices for each given record in the database. The B-tree then stores in its internal nodes, references to data records with the actual data records in its leaf nodes. This provides sequential access to data in the databases.
+
+
+7. Data Compression
+In data compression, Huffman coding is used to create a binary tree capable of compressing data. Data compression is the processing of encoding data to use fewer bits. Given a text to compress, Huffman coding builds a binary tree and inserts the encodings of characters in the nodes based on their frequency in the text.
+
+The encoding for a character is obtained by traversing the tree from its root to the node. Frequently occurring characters will have a shorter path as compared to less occurring characters. This is done to reduce the number of bits for frequent characters and ensure maximum data compression.
+
+For more details on how Huffman code is generated, check out our article on Queues.
+
+HEAP APPLICATIONS:
+Applications of the Heap Data Structure
+Heap is used in the construction of priority queues. We can insert, delete, identify the highest priority element, or insert and extract with priority, among other things, in O(log N) time using a priority queue. 
+Although data structures such as BST, AVL trees, and the Red-Black tree can accomplish the same functionalities, they are more complex than heaps. 
+
+Priority queues themselves have more advanced uses, such as bandwidth control in an n/w router, prims and Dijkstra's algorithm, Huffman coding, and the BFS algorithm. 
+A real-Life example where a priority queue can be used: 
+This type of queue could be used when customers who take a short time to serve are given priority instead of those customers who arrive early. For example, customers with a small bill to pay may be given precedence at a licensing center. The average waiting time for all clients in the queue is reduced due to this.
+ 
+Order statistics: The Heap data structure can be used to find the kth smallest / largest element in an array quickly and effectively. You can go through this article to learn more about the problem.
+ 
+Heap Sort is used in systems concerned with security and embedded systems, such as the Linux Kernel.
+Also, see Implementation of Heap
+
+
+Heap - It is a complete binary tree where nodes are in a specific order depending upon whether it is a max heap or a min-heap.
+
+Min Heap: The value at each node should be smaller than its children. 
+
+Max Heap: The value at each node should be greater than its children. 
+What is the difference between a tree and a graph?
+Trees and graphs are different since there can never be loops in a tree, but we can have loops in a graph. Also, all the nodes in a tree are always connected, but that is not true for a graph.
+
+What is a priority queue?
+Every value has some priority associated with it in a priority queue, and the value with the highest priority is dequeued first.
+
+SORTING:
+
+

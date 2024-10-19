@@ -1,0 +1,11 @@
+if(numRows==1) return s;
+string result="";
+int jumps=(numRows-1)*2;
+for(int i=0;i<numRows;i++){
+	for(int j=i;j<s.size();j+=jumps){
+		if(i>0 && numRows-1 &&  (j+jumps-2*i)<s.size()){
+		result+=s[j+jumps-2*i];
+}
+}
+}
+return string 

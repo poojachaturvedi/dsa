@@ -1,0 +1,95 @@
+Goal is to find the sum of all the path and return the sum
+Traverse from root to leaf
+   1
+  / \
+
+2     3
+sum=12+13=25
+
+              1
+		 / \
+		2   3
+	     / \  /
+	     4  5 6
+124+125+136
+=385
+
+
+[] 
+0
+
+
+if(root==NULL)
+return 0;
+1 return root->val;
+      1
+	/
+      2
+
+
+No of paths =no of leaf nodes
+
+we can only include the leaf node paths here
+
+TYPICAL RECURSION PROBLEM 
+
+take an ans variable to keep track of sum of  all the numbers 
+val to keep track of numbers formed
+intiallly ans=0, val=0
+   		  1
+		 / \
+		2   3
+	     / \  /
+	     4  5 6
+
+left shift the value by one element
+val=1
+val=1*10+2=12
+val=12*10+4=124 
+this a valid root to leaf number so we add it to sum
+we will then make the right call
+12*10+5
+125
+since it is a leaf node so we include this number in our ans
+we will return back to node 1
+1*10+3
+13*10+6
+136 this is a leaf node so add it to sum 
+
+ans = 385
+
+since we processed the left and right node 
+
+
+time complexity:0(N) 
+any node is traversed maximum one time
+
+
+
+ll ans=0;
+void dfs(TreeNode* root, ll val){
+if(!root){
+return;
+}
+val*=10;
+val+=root->val;
+if(!root->left && root->right){
+ans+=val;
+return ;
+}
+dfs(root->left,val);
+dfs(root->right,val);
+}
+int sumNumbers(TreeNode* root){
+if(!root)
+retutn 0;
+dfs(root,0);
+return ans;
+}
+
+
+
+
+
+
+

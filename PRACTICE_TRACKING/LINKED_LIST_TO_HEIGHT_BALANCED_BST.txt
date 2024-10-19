@@ -1,0 +1,53 @@
+CONCEPTS USED:
+Divide and conquer,recursion
+
+PROPERTY OF BST:
+left<node<right
+
+we can create different types of bst we can create using this property depending on the node
+we want to choose as the starting node
+but we need to balance the height i.e height of left subtree-height of right subtree<=1
+
+
+APPROACH --
+calculate the mid and then call recursion for left half and right half
+we will take the mid of the linked list 
+the elements of the left will become the left subtree
+the elements to the right will become the right subtree
+repeat the steps above for each half created by above process till no further division is possible
+
+
+we can take slow and fast pointer to calculate the middle of the linkedlist
+by the time fast pointer reaches the end then slow pointer will reach the end of the ll
+
+
+
+class Solution {
+public:
+    TreeNode* sortedListToBST(ListNode* head) {
+        if(head==NULL) return nullptr;
+	    return convertToBST(head,nullptr);
+    }
+   TreeNode *convertToBST(ListNode *start, ListNode *end)
+{
+    if (start == end)
+        return nullptr;
+    ListNode *slow = start;
+    ListNode *fast = start;
+    while (fast != end && fast->next != end)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    TreeNode *curr = new TreeNode(slow->val);
+    curr->left = convertToBST(start, slow);
+    curr->right = convertToBST(slow->next, end);
+    return curr;
+}
+};
+
+O(nlogn)
+O(nlogn)
+
+
+

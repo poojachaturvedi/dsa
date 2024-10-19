@@ -1,0 +1,7 @@
+Topo sorts are only applicable on a DAG
+But if the graph has a cycle 
+Topo sort not possible for graph having cycle
+Intially find the indegree of all the nodes
+get the first node and put it in the queue 
+if we produce a topo sort that is having element less than number of nodes then we can say that it contains a cycle
+

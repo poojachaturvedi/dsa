@@ -1,0 +1,158 @@
+grid of size n*n
+0-- water
+1--land
+we need to check for all the eight directions of water
+we need to find number of islands in the grid 
+
+
+this is a two-d matrix 
+lets assume all these grid elements as node
+it makes sure that we are traversing the nearest one
+and when there is zero all over it stops
+we can use the bfs or dfs traversal technique
+we can refer them by the starting node 
+insead of vertes number we are representing it as a pair of {rownum , colnum}
+we need a replica 2D array 
+create the same size 2d array 
+if there is visited array
+while traversal pickup element from queue and store all the elements in the stack 
+neighbours can be in 8 directions
+we will go on all the directions 
+if there is some 1 on the neighbour mark it 
+go for all the eight boundaries 
+apparently the queue will become empty
+in one traversal we were able to touch every node
+starting point is then changed and follow the same procedure
+
+no of starting point = no of islands
+
+
+for(row 0-n)
+for(col 0-m){
+{
+if(!vis[row][col]){
+bfs(row,col)
+cnt++;
+}
+}
+
+
+//either we can write all the eight neighbours or 
+row-1,col
+row-1,col+1
+row,col+1
+row+1,col+1
+row+1,col
+row+1,col-1
+row,col-1
+row-1,col-1
+//row is varying A ROW-1 TO ROW+1 and col is varying from col-1 to col+1
+for (delta row=-1 to+1){
+for( delta col=-1to +1){
+neighbout row=row+delrow;
+neighbour col=col+delcol;
+}
+}
+
+
+writing code step by step:
+void bfs(int row,int col,vector<vector<int>>&vis,vector<vector<char>>grid){
+vis[row][col]=1;
+queue<pair<int,int>> q;
+int n=grid.size();
+int m =grid.size();
+q.push(row,col);
+while(!q.empty()){
+int row=q.front().first;
+int col=q.front().second();
+q.pop();
+for(int deltarow=-1;deltarow<=1;deltarow++){
+for(int deltacol=-1;deltacol<=1;deltacol++){
+int nrow=row+delrow;
+int ncol=col+delcol;
+if(nrow>=0 && nrow<n &&ncol>=0 && ncol<m && grid[nrow][ncol]=='1' && vis[nrow][ncol]=='1'){
+vis[nrow][ncol]=1;
+q.push(nrow,ncol);
+}
+
+}
+int numIslands(vector<vector<char>>& grid){
+//no of rows
+int n=grid.size();
+//no if cols
+int m=grid[0].size();
+//creating a visited array of size m*n and marking its element as 0
+vector<vector<int>> vis(n,vector<int>(m,0));
+for(int rows=0;i<n;i++){
+for(int cols=0;j<n;j++){
+if(!vis[row][col] and grid[row][col]=='1'){
+cnt++;
+bfs(row,col,vis,grid);
+}
+}
+}
+return count;
+}
+
+
+
+GeeksForGeeks
+ queue<pair<int,int>> q;
+
+        q.push(make_pair(row,col));
+
+        vis[row][col] = 1;
+
+        
+
+        while(!q.empty()){
+
+            int x = q.front().first;
+
+            int y = q.front().second;
+
+            q.pop();
+
+            for(int i = -1;i <= 1;i++)
+
+            {
+
+                for(int j =-1;j<=1;j++){
+
+                    // nrow = neighbourrow ncol = neighbourcol 
+
+                    int nrow = x + i;
+
+                    int ncol = y + j;
+
+                    if(nrow >= 0 && nrow < grid.size() && ncol >= 0 && ncol < grid[0].size() && vis[nrow][ncol] == 0 && grid[nrow][ncol]=='1'){
+
+                        q.push(make_pair(nrow,ncol));
+
+                        vis[nrow][ncol] = 1;
+
+                    }
+
+                }
+
+            }
+
+            
+
+        }
+
+
+
+
+do the same using dfs
+
+
+space complexity-- n square
+O(n2)--to store it in the visited array
+O(n2)--queue will end up 
+
+time complexity-- nsquare
+two loops O(n2)
+we calledn  bfs no of time +traversal
+if everyone is marked as one bfs will travel n square node so we are checking 8*
+

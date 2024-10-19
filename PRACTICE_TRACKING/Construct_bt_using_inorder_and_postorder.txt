@@ -1,0 +1,76 @@
+Inorder-- left root right
+Postorder--left right root
+
+The last value of the postorder traversal is the root
+      3
+     /  \
+    9    20
+	  /  \
+	15    7
+
+whatever is left of the root node is the left subtree and whatever is the right is the right subtree
+
+9,3,15,20,7 -- inorder
+9,15,7,20,3 -- postorder
+
+
+ 3 
+left-- 9
+right-- 15,20,7
+
+we can then recursively solve this 
+we then need to find the root of rest of the tree left
+if we remove 3 from this we get 9,15,20,7
+
+
+whatever comes last is the root of the left subtree
+getting the root-- postorder last element 
+to get left and right 
+make recursive call for the right subtree
+make recursive call for the left subtree
+take a map and store the index of each and every node--this map will store index of each node of the tree
+
+
+
+Given : Inorder and postorder Traversal 
+Left right root
+Left root right
+
+When we need to make a specific kind of tree then we need to give the inorder and pre or postorder traversal of it
+
+Last node of post order traversal is the root of the tree
+terms left to root in inorder are the left subtree and same for the right subtree
+go to postorder or inorder and whatever comes to left comes in the left subtree and whatever comes in the right form the right subtree rest of the nodes are arranged in postorder for rest of the subtree root node always comes to right
+
+
+last node of post order-- root
+left-subtree root right-subtree inorder traversal
+from every postorder extract the right node and build tree
+
+TreeNode* buildTree(vector<int>& inorder,vector<int> &postorder){
+if(inorder.size()==0 || postorder.size()==0)
+return NULL;
+TreeNode* root= new TreeNode(postorder.back());
+//if size of postorder is one than the tree is made returing it
+if(postorder.size()==1)
+return root;
+//from starting of inorder to the end of inorder find the last value of the postorder also subtracting the first element index
+auto root=find(begin(inorder),end(inorder),postorder.back())-inorder.begin();
+//make the right inorder and left inorder tree
+vector<int> li(inorder.begin(),inorder.begin()+root);
+vector<int> ri(inorder.begin()+root+1,inorder.end());
+vector<int> lp(postorder.begin(),postorder.begin()+root);
+vector<int> rp(postorder.begin()+root,postorder.end()-1);
+root->left=buildTree(li,lp);
+root->right=buildTree(ri,rp);
+return root;
+}
+
+
+
+
+
+
+
+
+

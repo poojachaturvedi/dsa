@@ -1,0 +1,55 @@
+A subarray is beautiful if the xor of the whole subrray becomes zero
+
+
+arr : 4 1 1 2 2 3 3
+res: 
+intially i stands at 4
+then it goes to xor then it gives 5
+then do xor with 1 gives 5
+the 1 -- 4
+then 2 --6
+then 2--4 
+then 3--7
+then 3--4
+
+the resultant xor as 4  if any result is repeated it means some part of the subarray is giving us zero that's what we are getting
+it signifies that that whole subarray part before it is zero 
+we can just take the freq whenever freq of any element>1 then we will sum all the freq-1
+we need to map the subarray and map the frequency
+
+
+there are freq-1 beautiful subarray
+
+
+EXPLANATION 2:
+we need to choose two indexes in an array i and j
+if kth bit of nums[i] and nums[j] is 1 then we need to subtract 2^k or we need to make it zero
+make first bit which is set to zero
+a subarray all element can become zero in the 
+
+
+we have to make the set bit as zero
+if we want to make the set bit as zero we can do the xor operation to make the bit as zero
+
+
+[4,3,1,2,4]
+[100,011,001,010,100]
+the xor of all the elements is the zero here
+
+
+find a subarray whose xor in range is zero
+we need to find the ranges ehich has xor as zero
+here we will apply the prefix xor
+
+
+prefix xor
+0^rest of the element
+
+
+
+
+find prefix_xor
+if prefix
+
+
+

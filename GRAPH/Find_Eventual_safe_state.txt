@@ -1,0 +1,118 @@
+question -- 0 based indexing
+safe node--if every possible path from the node leads to a terminal node
+
+using cycle detection in undirected graph
+outdegree has to be zero
+
+
+2,5 and 6 are safe nodes
+terminal node or a  path ending on the terminal node
+if all the path end on the terminal node  then the node is safe node
+if they return back to themselves then they can't be a safe node
+
+LOGIC:
+
+every one who is part of cycle then that will not be a safe node
+anyone that leads to a cycle can't be a safe node
+apart from that everyone is a safe node
+
+
+
+vis and pathvis
+
+
+draw the adj list
+create the vis and pathvis array and assign them zeroes
+map the elements for the terminal node
+if there are no further calls then it is a safe node
+if there are some paths left figure out if the remaining path also end-up on the same node
+
+
+bool dfs(int node,vector<int> adj[],int vis[],int pathvis[],vector<int>&check){
+vis[node]=1;
+pathVis[node]=1;
+for(auto it:adj[node]){
+if(!vis[it]){
+//if part of cycle then it is not the part of cycle 
+if(dfs(i,adj,vis,path,check)==true)
+return true;
+}
+else if(pathVis[i]==1 && vis[i]==1){
+return true;
+}
+}
+check[node]=1;
+path[node]=0;
+return false;
+}
+vector<int> eventualSafeStates(int V,vector<int> adj[]){
+int vis[V]{0};
+int pathVis[V]={0};
+int check[V]={0};
+vector<int> safeNodes;
+for(int i=0;i<V;i++){
+
+if(!vis[i]){
+dfs(i,adj,vis,pathVis,check);
+
+}
+}
+
+for(int i=0;i<V;i++){
+if(check[i]==1)
+safeNodes.push_back(i);
+}
+return safeNodes;
+}
+
+
+space complexity:3n --for 3 arrays
+
+
+bool dfs(int s, vector<vector<int>>& graph,vector<int>& vis,vector<int>& pathvis,vector<int>& check){
+
+        vis[s]=1;
+        pathvis[s]=1;
+        check[s] =0;
+
+        for(int it: graph[s]){
+            if(!vis[it]){
+                if(dfs(it,graph,vis,pathvis,check) == true) {
+                    check[s] =0; 
+                    return true;
+                }
+            }
+            else if(pathvis[it] && vis[it]) {
+                check[s] =0;
+                return true;
+            }
+        }
+        // it Doesnot find a cycle
+        check[s]=1;
+        pathvis[s] =0;
+        return false;
+
+
+    }
+
+    vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
+
+        int n = graph.size();
+        vector<int> vis(n,false);
+        vector<int> pathvis(n,false);
+        vector<int> check(n,false);
+        vector<int> safeNodes;
+
+        for(int i=0; i<n; i++){
+            if(!vis[i]){
+                // We Dont have to Break the loop Whenever we get the cycle
+                // We have to go to and check for Each and every Ndoe
+                (dfs(i,graph,vis,pathvis,check));
+            }
+        }
+        for(int i=0; i<n; i++){
+            if(check[i] == 1) safeNodes.push_back(i);
+        }
+        return safeNodes;
+    }
+};
