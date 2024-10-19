@@ -1,0 +1,54 @@
+if there is any element as zero then set the entire row as zero and set entire cols as zero
+
+brute force:
+if all values are positive then if there is 0 then traverse entire row and set it to -1 similarly go for an entire column and set it to -1 
+whenevr there is a zero don't change it to -1
+wherever there is a -1 change it to 0
+time complexity:O(NM)*(N+M)
+NM--for traversing the entire grid
+N+M--for traversing row and col of that specific element
+SPACE COMPLEXITY:O(1)
+
+
+OPTIMIZED APPROACH
+--take two dummy arrays cols and rows of size equal to number of cols and number of rows respectively
+--if we get an element as zero then set zero over that particular row and col
+--for every  index then check if either rowth or colth index is zero then make it zero
+the time complexity becomed o(n*m*2) --two time traversal
+
+
+OPTIMIZED APPROACH 
+--TAKE FIRST COL as dummy col and take first row as dummy row
+--we go to the dummy position and change the values
+--start traversing from back 
+--
+
+
+
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+       int col=1,n=matrix.size(),m=matrix[0].size();
+       for(int i=0;i<n;i++){
+           if(matrix[i][0]==0) col=0;
+           for(int j=1;j<m;j++){
+               if(matrix[i][j]==0){
+                   matrix[i][0]=0;
+                   matrix[0][j]=0;
+               }
+           }
+        
+       }
+       for(int i=n-1;i>=0;i--){
+           for(int j=m-1;j>=1;j--){
+               if(matrix[0][j]==0 || matrix[i][0]==0){
+                   matrix[i][j]=0;
+               }
+           }
+           if(col==0){
+               matrix[i][0]=0;
+           }
+       } 
+    }
+};
+
